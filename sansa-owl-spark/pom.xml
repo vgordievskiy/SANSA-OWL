@@ -5,11 +5,11 @@
 
     <parent>
         <groupId>net.sansa-stack</groupId>
-        <artifactId>sansa-owl-parent_2.11</artifactId>
+        <artifactId>sansa-owl-parent_${scala.binary.version}</artifactId>
         <version>0.6.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>sansa-owl-spark_2.11</artifactId>
+    <artifactId>sansa-owl-spark_${scala.binary.version}</artifactId>
 
     <name>SANSA OWL layer - SPARK</name>
     <description>A library to read OWL files into Spark.</description>
@@ -22,6 +22,8 @@
             <groupId>net.sansa-stack</groupId>
             <artifactId>sansa-owl-common_${scala.binary.version}</artifactId>
             <version>${project.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../sansa-owl-common/target/sansa-owl-common_${scala.binary.version}-${sansa.version}.jar</systemPath>
         </dependency>
 
         <!-- Apache JENA 3.x-->
@@ -51,7 +53,7 @@
 
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-scala_2.11</artifactId>
+            <artifactId>jackson-module-scala_${scala.binary.version}</artifactId>
         </dependency>
 
         <!-- Spark dependencies -->
@@ -61,7 +63,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.11</artifactId>
+            <artifactId>spark-sql_${scala.binary.version}</artifactId>
         </dependency>
         <dependency>
             <groupId>de.javakaffee</groupId>
@@ -158,4 +160,22 @@
             </dependencies>
         </profile>
     </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <scalaCompatVersion>${scala.binary.version}</scalaCompatVersion>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.scalastyle</groupId>
+                <artifactId>scalastyle-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

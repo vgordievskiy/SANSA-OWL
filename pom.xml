@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>sansa-owl-parent_2.11</artifactId>
+	<artifactId>sansa-owl-parent_${scala.binary.version}</artifactId>
 	<parent>
 		<groupId>net.sansa-stack</groupId>
 		<artifactId>sansa-parent</artifactId>
@@ -133,6 +133,12 @@
 			</releases>
 		</repository>
 	</repositories>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<scala.version>2.12.8</scala.version>
+		<scala.binary.version>2.12</scala.binary.version>
+	</properties>
 
 	<profiles>
 		<profile>
